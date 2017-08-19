@@ -1,0 +1,16 @@
+{
+    "hospitals": [
+        {
+            "name":"Apollo",
+            "id": 1
+        },
+        {
+            "name":"Miot",
+            "id": 2
+        },
+        {
+            "name":"Hindumission",
+            "id": 3
+        }
+    ]
+}
