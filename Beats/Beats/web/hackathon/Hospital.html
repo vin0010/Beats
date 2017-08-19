@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Book an Appointment</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+	<div class="container">
+		<!-- intro starts -->
+  		<div class="jumbotron" id="page_heading">
+    		<h1>Hospital - Blood bank Search</h1>      
+    		<p>Search for the blood group in near by patients</p>
+  		<div>   
+  		<!-- intro ends -->
+
+  		<!-- blood search form starts -->
+  		<form id="hospital_blood_search_form">	
+  			<div class="form-group">
+			    <label for="patient_blood_group">Blood Group:</label>
+			    <select class="form-control" id="patient_blood_group">
+				  <option value="-1">Select blood group</option>
+				  <option value="1">O-</option>
+				  <option value="2">O+</option>
+				  <option value="3">A-</option>
+				  <option value="4">A+</option>
+				  <option value="5">B-</option>
+				  <option value="6">B+</option>
+				  <option value="7">AB-</option>
+				  <option value="8">AB+</option>
+				</select>
+	  		</div>	 	
+	  		<div class="form-group">
+			    <label for="patient_location_address">Location:</label>
+			    <input class="form-control input-sm" id="patient_location_address" type="text">
+	  		</div>
+	  		<div class="form-group">
+			    <label for="patient_location_radius">Radius:</label>
+			    <input class="form-control input-sm" id="patient_location_radius" type="text">
+	  		</div>
+	  		<div class="form-group">
+			    <label for="patient_location_lat">Latitude:</label>
+			    <input class="form-control input-sm" id="patient_location_lat" type="text">
+	  		</div>
+	  		<div class="form-group">
+			    <label for="patient_location_long">Longitude:</label>
+			    <input class="form-control input-sm" id="patient_location_long" type="text">
+	  		</div>
+	  		<div id="patient_location_map" style="width: 500px; height: 400px;margin-bottom: 20px;"></div>	  		
+		  <button type="button" class="btn btn-primary" id="patient_blood_search">Save</button>
+		</form>
+		<div id="patient_map" style="width: 500px; height: 400px;margin-bottom: 20px;" class="hidden"></div>
+  		<!-- blood search form ends --> 
+	</div>
+	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mockjax/1.6.2/jquery.mockjax.min.js"></script>
+	<script type="text/javascript" src='https://maps.google.com/maps/api/js?sensor=false'></script>
+    <script src="scripts/locationpicker.jquery.min.js"></script>
+	<script type="text/javascript" src="scripts/hospitalScripts.js"></script>
+	<script type="text/javascript" src="scripts/common.js"></script>
+</body>
+</html>

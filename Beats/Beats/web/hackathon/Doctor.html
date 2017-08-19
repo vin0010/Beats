@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>View Appointment and Feedback</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+	<div class="container">
+		<!-- intro starts -->
+  		<div class="jumbotron" id="page_heading">
+    		<h1>Doctor - View your appointment and feedback</h1>
+    		
+    		<div class="btn-group">
+			  <button type="button" class="btn btn-primary" id="btn_appts">View Appointments</button>
+			  <button type="button" class="btn btn-primary" id="btn_feedback">View Feedback</button>
+			</div>
+  		</div>
+  		<div>   
+  		<!-- intro ends -->
+
+  		<!--get doctor id starts-->
+  		<form id="doctor_appt_form" class="hidden">
+		 	<div class="form-group">
+			    <label for="doctor_id">Doctor Id:</label>
+			    <input class="form-control input-sm" id="doctor_id" type="text">
+	  		</div>	  		
+		  <button type="button" class="btn btn-primary" id="doctor_view_appt">Submit</button>
+		</form>
+  		<!--get doctor id ends-->
+
+  		<!--View appts in grid starts-->
+  		<table class="table table-bordered hidden" id="appts_table">
+		    <thead>
+		      <tr>
+		        <th>Appointment Date</th>
+		        <th>Patient Name</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		    </tbody>
+		  </table>
+  		<!--View appts in grid ends-->
+
+  		<!--get doctor id starts-->
+  		<form id="doctor_feedback_form" class="hidden">
+		 	<div class="form-group">
+			    <label for="doctor_id_feedback">Doctor Id:</label>
+			    <input class="form-control input-sm" id="doctor_id_feedback" type="text">
+	  		</div>	  		
+		  <button type="button" class="btn btn-primary" id="doctor_view_feedback">Submit</button>
+		</form>
+  		<!--get doctor id ends-->
+
+  		<!--feedback chart starts-->
+  			<div id="feedback_chart" class="hidden" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+  		<!--feedback chart ends-->
+	</div>
+	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mockjax/1.6.2/jquery.mockjax.min.js"></script>
+	<script type="text/javascript" src="scripts/doctorScripts.js"></script>
+	<script type="text/javascript" src="scripts/common.js"></script>
+</body>
+</html>

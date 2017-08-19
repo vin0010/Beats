@@ -3,6 +3,7 @@
 <head>
 	<title>Book an Appointment</title>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
 </head>
 <body>
 	<div class="container">
@@ -138,8 +139,8 @@
   		<!-- feedback starts -->
   		<form id="patient_feedback_form" class="hidden">
   			<div class="form-group">
-			    <label for="patient_blood_group">Doctor:</label>
-			    <select class="form-control" id="patient_blood_group">				  
+			    <label for="patient_visited_doctors">Doctor:</label>
+			    <select class="form-control" id="patient_visited_doctors">				  
 				</select>
 	  		</div>
 
@@ -162,7 +163,7 @@
 				  <option value="5">5</option>	  
 				</select>
 	  		</div>	  		
-		  <button type="button" class="btn btn-primary" id="patient_info_submit">Save</button>
+		  <button type="button" class="btn btn-primary" id="patient_feedback_submit">Submit feedback</button>
 		</form>
   		<!-- Enroll ends --> 
   		
@@ -174,6 +175,7 @@
         <script type="text/javascript" src='https://maps.google.com/maps/api/js?v=3&key=AIzaSyBGCIVeM9AN1XA2SQmfvTljXmvgnEN7lpU&sensor=false'></script>
     <script src="scripts/locationpicker.jquery.min.js"></script>
     <script src="scripts/bootstrap-datepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 	<script type="text/javascript" src="scripts/patientScripts.js"></script>
 	<script type="text/javascript" src="scripts/common.js"></script>
         <script type="text/javascript" src="scripts/config.js"></script>

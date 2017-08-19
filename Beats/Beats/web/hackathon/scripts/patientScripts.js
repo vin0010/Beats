@@ -9,7 +9,7 @@ $(document).ready(function(){
 			"hospitalname": "Apollo",
 			"location": {
 				"latitude": 12.997435,
-				"longitude": 80.245133,
+				"longitude": 80.245133
 			}
 		},
 		{
@@ -80,7 +80,18 @@ doctorDetailedReview = {
 
 apptSuccess = {
 	"status": "success"
-};
+},
+feedbackSuccess = {
+	"status": "success"
+},
+visitedDoctors = [{
+	"doctorid": 1,
+	"doctorname": "valli"
+
+}, {
+	"doctorid": 2,
+	"doctorname": "ramya"
+}];
 
 	//enroll click
 	$('#btn_enroll').on('click', function(e){
@@ -260,8 +271,11 @@ apptSuccess = {
 
 			      google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
 			        return function() {
-			          //infowindow.setContent(locations[i][0]);
-					  infowindow.setContent('<div id="content" style="width:200px;"><ul class="" style="list-style:none"><li><span data-hospitalId='+ doctorsList[i].hospitalid +'>'+ doctorsList[i].hospitalname +'</span></li><li><span data-doctorId='+ doctorsList[i].id +'>'+ doctorsList[i].name +'</span></li><li><span>'+ doctorsList[i].score +'</span></li></ul></div>');
+					  //infowindow.setContent('<div id="content" style="width:200px;"><ul class="" style="list-style:none"><li><span data-hospitalId='+ doctorsList[i].hospitalid +'>'+ doctorsList[i].hospitalname +'</span></li><li><span data-doctorId='+ doctorsList[i].id +'>'+ doctorsList[i].name +'</span></li><li><span>'+ doctorsList[i].score +'</span></li></ul></div>');
+					  infowindow.setContent('<dl><dt><p class="text-success">'+doctorsList[i].name+'</p></dt><dd class="text-info">- '+doctorsList[i].hospitalname+'</dd><dd><div id="doctor_rating"></div></dd></dl>');
+					  $("#doctor_rating").rateYo({
+					    rating: doctorsList[i].score
+					  });
 			          infowindow.open(map, marker);
 			        }
 			      })(marker, i));
@@ -312,7 +326,8 @@ apptSuccess = {
 			$('#doctor_detailed_review_form ul li').eq(2).find('span').text(data.infrastructure);
 
 			for(i=0;i<data.reviews.length;i++){
-				$('#patient_reviews').append('<div class="panel panel-default"><div class="panel-heading">'+data.reviews[i].heading+'</div><div class="panel-body"><p>By '+data.reviews[i].patientname+'</p><p>'+data.reviews[i].comments+'</p><div class="progress"><div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="'+(data.reviews[i].rating*20)+'" aria-valuemin="0" aria-valuemax="100" style="width:'+(data.reviews[i].rating*20)+'%">'+data.reviews[i].rating+'/5</div></div></div>');
+				//$('#patient_reviews').append('<div class="panel panel-default"><div class="panel-heading">'+data.reviews[i].heading+'</div><div class="panel-body"><p>By '+data.reviews[i].patientname+'</p><p>'+data.reviews[i].comments+'</p><div class="progress"><div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="'+(data.reviews[i].rating*20)+'" aria-valuemin="0" aria-valuemax="100" style="width:'+(data.reviews[i].rating*20)+'%">'+data.reviews[i].rating+'/5</div></div></div>');
+				$('#patient_reviews').append('<div class="panel panel-default"><div class="panel-heading">'+data.reviews[i].heading+'</div><div class="panel-body"><blockquote><p>'+data.reviews[i].comments+'</p><footer>'+data.reviews[i].patientname+'</footer></blockquote><div class="progress"><div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="'+(data.reviews[i].rating*20)+'" aria-valuemin="0" aria-valuemax="100" style="width:'+(data.reviews[i].rating*20)+'%">'+data.reviews[i].rating+'/5</div></div></div>');
 			}
 
 			$('#patient_appt_hospital').val(appt_payload.hospitalName);
@@ -369,7 +384,7 @@ apptSuccess = {
 				 url: '/restful/getVistedDoctors',
 				 responseTime: 750,
 				 data: JSON.stringify(payload),
-				 responseText: apptSuccess
+				 responseText: visitedDoctors
 			});
 
 			$.ajax({
@@ -380,7 +395,42 @@ apptSuccess = {
 				url: '/restful/getVistedDoctors',
 				data: JSON.stringify(payload),
 				success: function (data) {
-					
+					var i =0;
+            		$('#patient_visited_doctors').append("<option value='-1'>Select Visited Doctors</option>");
+	            	for(i=0;i<data.length;i++){
+	            		$('#patient_visited_doctors').append("<option value='" + data[i].doctorid + "'>" + data[i].doctorname + "</option>")
+	            	}
+				}
+			});
+		});
+
+		$('#patient_feedback_submit').on('click', function(e){
+			var payload = {
+				doctorId: parseInt($('#patient_visited_doctors').val(),10),
+				patientId: 1,
+				description: $('#patient_description').val(),
+				commnets: $('#patient_comments').val(),
+				rating: parseInt($('#patient_rating').val(),10)
+			}
+
+			$.mockjax({
+				 url: '/restful/submitFeedback',
+				 responseTime: 750,
+				 data: JSON.stringify(payload),
+				 responseText: feedbackSuccess
+			});
+
+			$.ajax({
+				type: 'POST',
+				cache: false,
+				async: true,
+				contentType: 'application/json; charset=utf-8',
+				url: '/restful/submitFeedback',
+				data: JSON.stringify(payload),
+				success: function (data) {
+					if(data.status === "success"){
+						alert("Feedback submitted");											
+					}
 				}
 			});
 		});
