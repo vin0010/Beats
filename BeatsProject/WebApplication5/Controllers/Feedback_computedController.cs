@@ -72,14 +72,20 @@ namespace WebApplication5.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // PUT: api/Feedback_computed/5
-        //[ResponseType(typeof(void))]
-        //public void UpdateFeedback_computed(int id, Feedback feedback)
-        //{
-        //var query = db.Feedback_computed
+      //   PUT: api/Feedback_computed/5
+      
+        public void UpdateFeedback_computed(int id, Feedback feedback)
+        {
+            Feedback_computed fc;
+            fc = db.Feedback_computed.SingleOrDefault(s => s.DoctorId == feedback.DoctorId);
 
-        //     db.SaveChanges();
-        //}
+            fc.Quality = fc.Quality + feedback.Quality;
+            fc.Infrastructure = fc.Infrastructure + feedback.Infrastructure;
+            fc.Waiting = fc.Waiting + feedback.Waiting;
+            fc.OverallScore = (fc.Quality + fc.Infrastructure + fc.Waiting)/3;
+            db.Entry(fc).State = EntityState.Modified;
+            db.SaveChanges();
+        }
         // POST: api/Feedback_computed
         [ResponseType(typeof(Feedback_computed))]
         public IHttpActionResult PostFeedback_computed(Feedback_computed feedback_computed)

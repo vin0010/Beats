@@ -24,6 +24,16 @@ namespace WebApplication5.Controllers
             return db.Doctors;
         }
 
+        public IQueryable GetDoctorsforFeedback(int patientId)
+        {
+            //return db.Doctors;
+            var qry = from b in db.Patients
+                join f in db.Appointments on b.PatientId equals f.PatientId
+                join g in db.Doctors on f.DoctorId equals g.DoctorId                 
+                select new {g.DoctorId , g.DoctorName};
+
+            return qry;
+        }
         // GET: api/Doctors/5
         [ResponseType(typeof(Doctor))]
         public IHttpActionResult GetDoctor(int id)
@@ -38,7 +48,7 @@ namespace WebApplication5.Controllers
         }
 
         // GET: api/Doctors/5
-        [ResponseType(typeof(Doctor))]
+       // [ResponseType(typeof(Doctor))]
         public IQueryable GetDoctorsNearby(int Specialityid,int Source_Latitude,int Source_Longitude,int median =2)
         {             
        //List<Doctor> DoctorbySpeciality= db.Doctors.Where(y => y.SpecialityID == Specialityid).ToList();
@@ -47,7 +57,7 @@ namespace WebApplication5.Controllers
        float Max_Y = Source_Longitude + median;
        float Min_X = Source_Latitude - median;
        float Min_Y = Source_Longitude - median;
-            var Feedback_computed_query = db.Feedback_computed;
+       
        var qry = from b in db.Doctors
               .Where(
                y =>

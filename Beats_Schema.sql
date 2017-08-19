@@ -1,83 +1,89 @@
 USE [master]
 GO
-/****** Object:  Database [beats]    Script Date: 8/19/2017 3:14:25 PM ******/
-CREATE DATABASE [beats]
+/****** Object:  Database [hackathonDb1]    Script Date: 8/20/2017 1:39:14 AM ******/
+CREATE DATABASE [hackathonDb1]
  CONTAINMENT = NONE
  ON  PRIMARY 
-( NAME = N'beats', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\beats.mdf' , SIZE = 3264KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+( NAME = N'hackathonDb1', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\hackathonDb1.mdf' , SIZE = 3264KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
  LOG ON 
-( NAME = N'beats_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\beats_log.ldf' , SIZE = 816KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+( NAME = N'hackathonDb1_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\hackathonDb1_log.ldf' , SIZE = 816KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
 GO
-ALTER DATABASE [beats] SET COMPATIBILITY_LEVEL = 120
+ALTER DATABASE [hackathonDb1] SET COMPATIBILITY_LEVEL = 120
 GO
 IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
 begin
-EXEC [beats].[dbo].[sp_fulltext_database] @action = 'enable'
+EXEC [hackathonDb1].[dbo].[sp_fulltext_database] @action = 'enable'
 end
 GO
-ALTER DATABASE [beats] SET ANSI_NULL_DEFAULT OFF 
+ALTER DATABASE [hackathonDb1] SET ANSI_NULL_DEFAULT OFF 
 GO
-ALTER DATABASE [beats] SET ANSI_NULLS OFF 
+ALTER DATABASE [hackathonDb1] SET ANSI_NULLS OFF 
 GO
-ALTER DATABASE [beats] SET ANSI_PADDING OFF 
+ALTER DATABASE [hackathonDb1] SET ANSI_PADDING OFF 
 GO
-ALTER DATABASE [beats] SET ANSI_WARNINGS OFF 
+ALTER DATABASE [hackathonDb1] SET ANSI_WARNINGS OFF 
 GO
-ALTER DATABASE [beats] SET ARITHABORT OFF 
+ALTER DATABASE [hackathonDb1] SET ARITHABORT OFF 
 GO
-ALTER DATABASE [beats] SET AUTO_CLOSE OFF 
+ALTER DATABASE [hackathonDb1] SET AUTO_CLOSE OFF 
 GO
-ALTER DATABASE [beats] SET AUTO_SHRINK OFF 
+ALTER DATABASE [hackathonDb1] SET AUTO_SHRINK OFF 
 GO
-ALTER DATABASE [beats] SET AUTO_UPDATE_STATISTICS ON 
+ALTER DATABASE [hackathonDb1] SET AUTO_UPDATE_STATISTICS ON 
 GO
-ALTER DATABASE [beats] SET CURSOR_CLOSE_ON_COMMIT OFF 
+ALTER DATABASE [hackathonDb1] SET CURSOR_CLOSE_ON_COMMIT OFF 
 GO
-ALTER DATABASE [beats] SET CURSOR_DEFAULT  GLOBAL 
+ALTER DATABASE [hackathonDb1] SET CURSOR_DEFAULT  GLOBAL 
 GO
-ALTER DATABASE [beats] SET CONCAT_NULL_YIELDS_NULL OFF 
+ALTER DATABASE [hackathonDb1] SET CONCAT_NULL_YIELDS_NULL OFF 
 GO
-ALTER DATABASE [beats] SET NUMERIC_ROUNDABORT OFF 
+ALTER DATABASE [hackathonDb1] SET NUMERIC_ROUNDABORT OFF 
 GO
-ALTER DATABASE [beats] SET QUOTED_IDENTIFIER OFF 
+ALTER DATABASE [hackathonDb1] SET QUOTED_IDENTIFIER OFF 
 GO
-ALTER DATABASE [beats] SET RECURSIVE_TRIGGERS OFF 
+ALTER DATABASE [hackathonDb1] SET RECURSIVE_TRIGGERS OFF 
 GO
-ALTER DATABASE [beats] SET  ENABLE_BROKER 
+ALTER DATABASE [hackathonDb1] SET  ENABLE_BROKER 
 GO
-ALTER DATABASE [beats] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+ALTER DATABASE [hackathonDb1] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
 GO
-ALTER DATABASE [beats] SET DATE_CORRELATION_OPTIMIZATION OFF 
+ALTER DATABASE [hackathonDb1] SET DATE_CORRELATION_OPTIMIZATION OFF 
 GO
-ALTER DATABASE [beats] SET TRUSTWORTHY OFF 
+ALTER DATABASE [hackathonDb1] SET TRUSTWORTHY OFF 
 GO
-ALTER DATABASE [beats] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+ALTER DATABASE [hackathonDb1] SET ALLOW_SNAPSHOT_ISOLATION OFF 
 GO
-ALTER DATABASE [beats] SET PARAMETERIZATION SIMPLE 
+ALTER DATABASE [hackathonDb1] SET PARAMETERIZATION SIMPLE 
 GO
-ALTER DATABASE [beats] SET READ_COMMITTED_SNAPSHOT OFF 
+ALTER DATABASE [hackathonDb1] SET READ_COMMITTED_SNAPSHOT OFF 
 GO
-ALTER DATABASE [beats] SET HONOR_BROKER_PRIORITY OFF 
+ALTER DATABASE [hackathonDb1] SET HONOR_BROKER_PRIORITY OFF 
 GO
-ALTER DATABASE [beats] SET RECOVERY FULL 
+ALTER DATABASE [hackathonDb1] SET RECOVERY FULL 
 GO
-ALTER DATABASE [beats] SET  MULTI_USER 
+ALTER DATABASE [hackathonDb1] SET  MULTI_USER 
 GO
-ALTER DATABASE [beats] SET PAGE_VERIFY CHECKSUM  
+ALTER DATABASE [hackathonDb1] SET PAGE_VERIFY CHECKSUM  
 GO
-ALTER DATABASE [beats] SET DB_CHAINING OFF 
+ALTER DATABASE [hackathonDb1] SET DB_CHAINING OFF 
 GO
-ALTER DATABASE [beats] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+ALTER DATABASE [hackathonDb1] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
 GO
-ALTER DATABASE [beats] SET TARGET_RECOVERY_TIME = 0 SECONDS 
+ALTER DATABASE [hackathonDb1] SET TARGET_RECOVERY_TIME = 0 SECONDS 
 GO
-ALTER DATABASE [beats] SET DELAYED_DURABILITY = DISABLED 
+ALTER DATABASE [hackathonDb1] SET DELAYED_DURABILITY = DISABLED 
 GO
-EXEC sys.sp_db_vardecimal_storage_format N'beats', N'ON'
+EXEC sys.sp_db_vardecimal_storage_format N'hackathonDb1', N'ON'
 GO
-USE [beats]
+USE [hackathonDb1]
 GO
-/****** Object:  Table [dbo].[Appointment]    Script Date: 8/19/2017 3:14:25 PM ******/
+/****** Object:  User [temp]    Script Date: 8/20/2017 1:39:14 AM ******/
+CREATE USER [temp] FOR LOGIN [temp] WITH DEFAULT_SCHEMA=[temp]
+GO
+/****** Object:  Schema [temp]    Script Date: 8/20/2017 1:39:14 AM ******/
+CREATE SCHEMA [temp]
+GO
+/****** Object:  Table [dbo].[Appointment]    Script Date: 8/20/2017 1:39:14 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -94,7 +100,7 @@ CREATE TABLE [dbo].[Appointment](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Bloodgroup]    Script Date: 8/19/2017 3:14:25 PM ******/
+/****** Object:  Table [dbo].[Bloodgroup]    Script Date: 8/20/2017 1:39:14 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -109,7 +115,7 @@ CREATE TABLE [dbo].[Bloodgroup](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Doctor]    Script Date: 8/19/2017 3:14:25 PM ******/
+/****** Object:  Table [dbo].[Doctor]    Script Date: 8/20/2017 1:39:14 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -134,7 +140,7 @@ CREATE TABLE [dbo].[Doctor](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Feedback]    Script Date: 8/19/2017 3:14:25 PM ******/
+/****** Object:  Table [dbo].[Feedback]    Script Date: 8/20/2017 1:39:14 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -143,12 +149,14 @@ SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[Feedback](
 	[FeedbackId] [int] IDENTITY(1,1) NOT NULL,
-	[FeedbackDescription] [varchar](max) NULL,
+	[FeedbackTitle] [varchar](max) NULL,
 	[Quality] [float] NULL,
 	[Waiting] [float] NULL,
 	[Infrastructure] [float] NULL,
 	[DoctorId] [int] NULL,
 	[PatientId] [int] NULL,
+	[appointmentId] [int] NULL,
+	[FeedbackDescription] [varchar](max) NULL,
  CONSTRAINT [PK_Feedback] PRIMARY KEY CLUSTERED 
 (
 	[FeedbackId] ASC
@@ -158,7 +166,7 @@ CREATE TABLE [dbo].[Feedback](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Feedback_computed]    Script Date: 8/19/2017 3:14:25 PM ******/
+/****** Object:  Table [dbo].[Feedback_computed]    Script Date: 8/20/2017 1:39:14 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -169,6 +177,7 @@ CREATE TABLE [dbo].[Feedback_computed](
 	[Quality] [float] NULL,
 	[Waiting] [float] NULL,
 	[Infrastructure] [float] NULL,
+	[OverallScore] [float] NULL,
  CONSTRAINT [PK_Feedback_computed] PRIMARY KEY CLUSTERED 
 (
 	[ComputedId] ASC
@@ -176,7 +185,7 @@ CREATE TABLE [dbo].[Feedback_computed](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Hospital]    Script Date: 8/19/2017 3:14:25 PM ******/
+/****** Object:  Table [dbo].[Hospital]    Script Date: 8/20/2017 1:39:14 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -197,7 +206,7 @@ CREATE TABLE [dbo].[Hospital](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Patient]    Script Date: 8/19/2017 3:14:25 PM ******/
+/****** Object:  Table [dbo].[Patient]    Script Date: 8/20/2017 1:39:14 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -212,6 +221,7 @@ CREATE TABLE [dbo].[Patient](
 	[latitude] [float] NULL,
 	[longitude] [float] NULL,
 	[BloodGroupID] [int] NULL,
+	[mobilenumber] [bigint] NULL,
  CONSTRAINT [PK_Patient] PRIMARY KEY CLUSTERED 
 (
 	[PatientId] ASC
@@ -221,7 +231,7 @@ CREATE TABLE [dbo].[Patient](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[speciality]    Script Date: 8/19/2017 3:14:25 PM ******/
+/****** Object:  Table [dbo].[speciality]    Script Date: 8/20/2017 1:39:14 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -277,5 +287,5 @@ ALTER TABLE [dbo].[Patient] CHECK CONSTRAINT [FK_Patient_BloodGroupID]
 GO
 USE [master]
 GO
-ALTER DATABASE [beats] SET  READ_WRITE 
+ALTER DATABASE [hackathonDb1] SET  READ_WRITE 
 GO

@@ -82,6 +82,16 @@ namespace WebApplication5.Controllers
             db.Feedbacks.Add(feedback);
             db.SaveChanges();
 
+            Feedback_computed fc;
+            fc = db.Feedback_computed.SingleOrDefault(s => s.DoctorId == feedback.DoctorId);
+
+            fc.Quality = fc.Quality + feedback.Quality;
+            fc.Infrastructure = fc.Infrastructure + feedback.Infrastructure;
+            fc.Waiting = fc.Waiting + feedback.Waiting;
+            fc.OverallScore = (fc.Quality + fc.Infrastructure + fc.Waiting) / 3;
+            db.Entry(fc).State = EntityState.Modified;
+            db.SaveChanges();
+
             return CreatedAtRoute("DefaultApi", new { id = feedback.FeedbackId }, feedback);
         }
 
