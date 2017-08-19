@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
 	//mock
 	var physiciansList = {
 	"doctors": [{
@@ -117,18 +116,15 @@ apptSuccess = {
 	 	sex = $("input[name='optsex']:checked").val();
 		mobileNumber = parseInt($('#patient_mobile').val(),10);
 		bloodGroup = parseInt($('#patient_blood_group').val(),10);
-		location = {
+		
+		return {
+			patientname: name,			
+			age: age,	
+			gender: sex,	
+			mobileNumber: mobileNumber,
+			bloodgroupid: bloodGroup,
 			latitude: parseFloat($('#patient_location_lat').val()),
 			longitude: parseFloat($('#patient_location_long').val())
-		};
-
-		return {
-			name: name,			
-			age: age,	
-			sex: sex,	
-			mobileNumber: mobileNumber,
-			bloodgroup: bloodGroup,
-			location: location
 		}
 	}
 
@@ -138,24 +134,26 @@ apptSuccess = {
 		payload = getFormValues();
 		console.log(data);
 
-		$.mockjax({
-		  url: '/restful/AddPatient',
-		  responseTime: 750,
-		  data: JSON.stringify(payload),
-		  responseText: {
-		    status: 'success'		    
-		  }
-		});
+//		$.mockjax({
+//		  url: '/restful/AddPatient',
+//		  responseTime: 750,
+//		  data: JSON.stringify(payload),
+//		  responseText: {
+//		    status: 'success'		    
+//		  }
+	    //		});
 
+	    console.log(payload);
 		$.ajax({
-        	type: 'POST',
-            cache: false,
+		    type: 'POST',
+		    cache: false,
             async: true,
             contentType: 'application/json; charset=utf-8',
-            url: '/restful/AddPatient',
+            url: config.baseUrl + '/api/Patients/PostPatient',
             data: JSON.stringify(payload),
             success: function (data) {
-            	if(data.status === 'success'){
+                console.log("-->"+data);
+                if (data.PatientId !== '') {
             		$('#patient_enroll_form').addClass('hidden');
             		$('#patient_pbm_search_form').removeClass('hidden');
             		$(window).scrollTop(0);
@@ -182,25 +180,18 @@ apptSuccess = {
 		}
 		
 		var loadSpecialties = function(){
-			//trigger ajax and in success	
-			//then separtae function for onchange of specialty and trigger ajax and load its problems
-			$.mockjax({
-			  url: '/restful/LoadSpecialties',
-			  responseTime: 750,
-			  responseText: specialtyList
-			});
 
 		$.ajax({
-        	type: 'POST',
+        	type: 'GET',
             cache: false,
             async: true,
             contentType: 'application/json; charset=utf-8',
-            url: '/restful/LoadSpecialties',
+            url: config.baseUrl + '/api/specialities/Getspecialities',
             success: function (data) {
             	var i =0;
             	$('#specialty').append("<option value='-1'>Select Specialty</option>");
-            	for(i=0;i<data.specialties.length;i++){
-            		$('#specialty').append("<option value='" + data.specialties[i].id + "'>" + data.specialties[i].name + "</option>")
+            	for(i=0;i<data.length;i++){
+            	    $('#specialty').append("<option value='" + data[i].$id + "'>" + data[i].Specialityname + "</option>")
             	}
             }
 		});  	
@@ -228,12 +219,12 @@ apptSuccess = {
 
 		var loadNearByPhysicians = function(payload){
 			//trigger ajax and show near by doctors in map as markers
-			$.mockjax({
-			  url: '/restful/loadPhysicians',
-			  responseTime: 750,
-			  data: JSON.stringify(payload),
-			  responseText: physiciansList
-			});
+//			$.mockjax({
+//			  url: '/restful/loadPhysicians',
+//			  responseTime: 750,
+//			  data: JSON.stringify(payload),
+//			  responseText: physiciansList
+//			});
 
 		$.ajax({
         	type: 'POST',

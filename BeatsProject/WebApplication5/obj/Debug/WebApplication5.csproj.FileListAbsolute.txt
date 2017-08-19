@@ -16,3 +16,20 @@ C:\Users\perumalva\Documents\Visual Studio 2013\Projects\WebApplication5\WebAppl
 C:\Users\perumalva\Documents\Visual Studio 2013\Projects\WebApplication5\WebApplication5\obj\Debug\WebApplication5.csprojResolveAssemblyReference.cache
 C:\Users\perumalva\Documents\Visual Studio 2013\Projects\WebApplication5\WebApplication5\obj\Debug\WebApplication5.dll
 C:\Users\perumalva\Documents\Visual Studio 2013\Projects\WebApplication5\WebApplication5\obj\Debug\WebApplication5.pdb
+C:\Users\gopuv\Documents\devmerge\Beats\BeatsProject\WebApplication5\bin\WebApplication5.dll.config
+C:\Users\gopuv\Documents\devmerge\Beats\BeatsProject\WebApplication5\bin\WebApplication5.dll
+C:\Users\gopuv\Documents\devmerge\Beats\BeatsProject\WebApplication5\bin\WebApplication5.pdb
+C:\Users\gopuv\Documents\devmerge\Beats\BeatsProject\WebApplication5\bin\EntityFramework.dll
+C:\Users\gopuv\Documents\devmerge\Beats\BeatsProject\WebApplication5\bin\EntityFramework.SqlServer.dll
+C:\Users\gopuv\Documents\devmerge\Beats\BeatsProject\WebApplication5\bin\Newtonsoft.Json.dll
+C:\Users\gopuv\Documents\devmerge\Beats\BeatsProject\WebApplication5\bin\System.Net.Http.Formatting.dll
+C:\Users\gopuv\Documents\devmerge\Beats\BeatsProject\WebApplication5\bin\System.Web.Http.dll
+C:\Users\gopuv\Documents\devmerge\Beats\BeatsProject\WebApplication5\bin\System.Web.Http.WebHost.dll
+C:\Users\gopuv\Documents\devmerge\Beats\BeatsProject\WebApplication5\bin\EntityFramework.xml
+C:\Users\gopuv\Documents\devmerge\Beats\BeatsProject\WebApplication5\bin\EntityFramework.SqlServer.xml
+C:\Users\gopuv\Documents\devmerge\Beats\BeatsProject\WebApplication5\bin\Newtonsoft.Json.xml
+C:\Users\gopuv\Documents\devmerge\Beats\BeatsProject\WebApplication5\bin\System.Net.Http.Formatting.xml
+C:\Users\gopuv\Documents\devmerge\Beats\BeatsProject\WebApplication5\bin\System.Web.Http.xml
+C:\Users\gopuv\Documents\devmerge\Beats\BeatsProject\WebApplication5\bin\System.Web.Http.WebHost.xml
+C:\Users\gopuv\Documents\devmerge\Beats\BeatsProject\WebApplication5\obj\Debug\WebApplication5.dll
+C:\Users\gopuv\Documents\devmerge\Beats\BeatsProject\WebApplication5\obj\Debug\WebApplication5.pdb
