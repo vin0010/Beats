@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Beats", "Beats\Beats.vbproj", "{06E5E0C8-C469-4632-9A0C-1205DC513BAD}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Beats", "Beats\Beats-UI.vbproj", "{06E5E0C8-C469-4632-9A0C-1205DC513BAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
