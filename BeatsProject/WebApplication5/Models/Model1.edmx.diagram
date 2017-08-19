@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1fa59004b09848dea9291b7bf2ded629" Name="Diagram1">
+        <EntityTypeShape EntityType="hackathonDb1Model.Appointment" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="hackathonDb1Model.Bloodgroup" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hackathonDb1Model.Doctor" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="hackathonDb1Model.Feedback" Width="1.5" PointX="8.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="hackathonDb1Model.Feedback_computed" Width="1.5" PointX="5.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="hackathonDb1Model.Hospital" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="hackathonDb1Model.Patient" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="hackathonDb1Model.speciality" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="hackathonDb1Model.FK_Appointment_Doctorid" ManuallyRouted="false" />
+        <AssociationConnector Association="hackathonDb1Model.FK_Appointment_Patientid" ManuallyRouted="false" />
+        <AssociationConnector Association="hackathonDb1Model.FK_Patient_BloodGroupID" ManuallyRouted="false" />
+        <AssociationConnector Association="hackathonDb1Model.FK_Doctor_Hospitalid" ManuallyRouted="false" />
+        <AssociationConnector Association="hackathonDb1Model.FK_Doctor_SpecialityID" ManuallyRouted="false" />
+        <AssociationConnector Association="hackathonDb1Model.FK_Feedback_Doctorid" ManuallyRouted="false" />
+        <AssociationConnector Association="hackathonDb1Model.FK_Feedback_Patientid" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
