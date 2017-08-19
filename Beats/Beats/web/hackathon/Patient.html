@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Book an Appointment</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+	<div class="container">
+		<!-- intro starts -->
+  		<div class="jumbotron" id="page_heading">
+    		<h1>Patient - Book an Appointment</h1>      
+    		<p>Enroll yourself and book and appointment with your near by doctors</p>
+    		
+    		<div class="btn-group">
+			  <button type="button" class="btn btn-primary" id="btn_enroll">Enroll</button>
+			  <button type="button" class="btn btn-primary" id="btn_feedback">Give Feedback</button>
+			</div>
+  		</div>
+  		<div>   
+  		<!-- intro ends -->
+
+  		<!-- Enroll starts -->
+  		<form id="patient_enroll_form" class="hidden">
+		 	<div class="form-group">
+			    <label for="patient_name">Name:</label>
+			    <input class="form-control input-sm" id="patient_name" type="text">
+	  		</div>
+	  		<div class="form-group">
+			    <label for="patient_age">Age:</label>
+			    <input class="form-control input-sm" id="patient_age" type="text">
+	  		</div>
+	  		<div class="form-group">
+			    <label class="control-label">Sex:</label>
+			    <label class="radio-inline"><input type="radio" name="optsex" id="sex_male" value="M">Male</label>
+			    <label class="radio-inline"><input type="radio" name="optsex" id="sex_female" value="F">Female</label>			    
+	  		</div>
+	  		<div class="form-group">
+			    <label for="patient_mobile">Mobile Number:</label>
+			    <input class="form-control input-sm" id="patient_mobile" type="text">
+	  		</div>
+	  		<div class="form-group">
+			    <label for="patient_blood_group">Blood Group:</label>
+			    <select class="form-control" id="patient_blood_group">
+				  <option value="-1">Select blood group</option>
+				  <option value="1">O-</option>
+				  <option value="2">O+</option>
+				  <option value="3">A-</option>
+				  <option value="4">A+</option>
+				  <option value="5">B-</option>
+				  <option value="6">B+</option>
+				  <option value="7">AB-</option>
+				  <option value="8">AB+</option>
+				</select>
+	  		</div>
+	  		<div class="form-group">
+			    <label for="patient_location_address">Location:</label>
+			    <input class="form-control input-sm" id="patient_location_address" type="text">
+	  		</div>
+	  		<div class="form-group">
+			    <label for="patient_location_radius">Radius:</label>
+			    <input class="form-control input-sm" id="patient_location_radius" type="text">
+	  		</div>
+	  		<div class="form-group">
+			    <label for="patient_location_lat">Latitude:</label>
+			    <input class="form-control input-sm" id="patient_location_lat" type="text">
+	  		</div>
+	  		<div class="form-group">
+			    <label for="patient_location_long">Longitude:</label>
+			    <input class="form-control input-sm" id="patient_location_long" type="text">
+	  		</div>
+	  		<div id="patient_location_map" style="width: 500px; height: 400px;margin-bottom: 20px;"></div>
+		  <button type="button" class="btn btn-primary" id="patient_info_submit">Save</button>
+		</form>
+  		<!-- Enroll ends --> 
+  		
+  		<!-- patient problem search starts-->
+  		<form id="patient_pbm_search_form" class="hidden">
+	  		<div class="form-group">
+			    <label for="specialty">Specialty:</label>
+			    <select class="form-control" id="specialty"></select>
+	  		</div>
+	  		<div class="form-group">
+			    <label for="patient_location_address">Location:</label>
+			    <input class="form-control input-sm" id="patient_address" type="text">
+	  		</div>
+	  		<div class="form-group">
+			    <label for="patient_location_radius">Radius:</label>
+			    <input class="form-control input-sm" id="patient_radius" type="text">
+	  		</div>
+	  		<div class="form-group">
+			    <label for="patient_location_lat">Latitude:</label>
+			    <input class="form-control input-sm" id="patient_lat" type="text">
+	  		</div>
+	  		<div class="form-group">
+			    <label for="patient_location_long">Longitude:</label>
+			    <input class="form-control input-sm" id="patient_long" type="text">
+	  		</div>
+	  		<div id="patient_map" style="width: 500px; height: 400px;margin-bottom: 20px;"></div>
+		  <button type="button" class="btn btn-primary" id="patient_search">Search</button>
+		</form>
+		<!-- patient problem search ends--> 
+
+		<!-- doctor map ends--> 
+		<div id="physician_map" style="width: 500px; height: 400px;margin-bottom: 30px;" class="hidden"></div>
+  		<!-- doctor map ends--> 
+
+  		<!--doctor detailed review form starts -->
+  		<div id="doctor_detailed_review_form" class="hidden" style="border: 2px solid #eee;padding: 20px;">
+	  		<h4>Doctor's Review</h4>
+	  	  	<ul class="list-group">
+			  <li class="list-group-item">Quality <span class="badge"></span></li>
+			  <li class="list-group-item">Average Waiting Time <span class="badge"></span></li> 
+			  <li class="list-group-item">Infrastructure <span class="badge"></span></li> 
+		  	</ul>
+		  	<div id="patient_reviews">
+		  	</div>
+		  	<div class="form-group">
+			    <label for="patient_appt_hospital">Hospital:</label>
+			    <input class="form-control input-sm" id="patient_appt_hospital" type="text">
+	  		</div>
+	  		<div class="form-group">
+			    <label for="patient_appt_doctor">Dcotor:</label>
+			    <input class="form-control input-sm" id="patient_appt_doctor" type="text">
+	  		</div>
+		  	<div class="form-group">
+			    <label for="appt_date">Date:</label>
+			    <div class="input-group">
+			        <div class="input-group-addon">
+			        	<i class="fa fa-calendar"></i>
+			        </div>
+			        <input class="form-control" id="appt_date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+			    </div>
+	  		</div>
+		  <button type="button" class="btn btn-primary" id="patient_book_appt">Book Appointment</button>
+		</div>
+  		<!--doctor detailed review form ends -->
+
+  		<!-- feedback starts -->
+  		<form id="patient_feedback_form" class="hidden">
+  			<div class="form-group">
+			    <label for="patient_blood_group">Doctor:</label>
+			    <select class="form-control" id="patient_blood_group">				  
+				</select>
+	  		</div>
+
+		 	<div class="form-group">
+			    <label for="patient_description">Description:</label>
+			    <input class="form-control input-sm" id="patient_description" type="text">
+	  		</div>
+	  		<div class="form-group">
+			    <label for="patient_comments">Comments:</label>
+			    <input class="form-control input-sm" id="patient_comments" type="text">
+	  		</div>
+	  		<div class="form-group">
+			    <label for="patient_rating">Rating:</label>
+			    <select class="form-control" id="patient_rating">	
+			      <option value="-1">Select Rating</option>	
+				  <option value="1">1</option>
+				  <option value="2">2</option>
+				  <option value="3">3</option>
+				  <option value="4">4</option>
+				  <option value="5">5</option>	  
+				</select>
+	  		</div>	  		
+		  <button type="button" class="btn btn-primary" id="patient_info_submit">Save</button>
+		</form>
+  		<!-- Enroll ends --> 
+  		
+
+	</div>
+	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mockjax/1.6.2/jquery.mockjax.min.js"></script>
+	<script type="text/javascript" src='https://maps.google.com/maps/api/js?sensor=false'></script>
+    <script src="scripts/locationpicker.jquery.min.js"></script>
+    <script src="scripts/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="scripts/patientScripts.js"></script>
+	<script type="text/javascript" src="scripts/common.js"></script>
+</body>
+</html>
