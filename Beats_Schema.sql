@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [beats]    Script Date: 8/19/2017 3:14:25 PM ******/
+/****** Object:  Database [beats]    Script Date: 8/19/2017 10:48:23 PM ******/
 CREATE DATABASE [beats]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -77,7 +77,7 @@ EXEC sys.sp_db_vardecimal_storage_format N'beats', N'ON'
 GO
 USE [beats]
 GO
-/****** Object:  Table [dbo].[Appointment]    Script Date: 8/19/2017 3:14:25 PM ******/
+/****** Object:  Table [dbo].[Appointment]    Script Date: 8/19/2017 10:48:23 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -94,7 +94,7 @@ CREATE TABLE [dbo].[Appointment](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Bloodgroup]    Script Date: 8/19/2017 3:14:25 PM ******/
+/****** Object:  Table [dbo].[Bloodgroup]    Script Date: 8/19/2017 10:48:23 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -109,7 +109,7 @@ CREATE TABLE [dbo].[Bloodgroup](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Doctor]    Script Date: 8/19/2017 3:14:25 PM ******/
+/****** Object:  Table [dbo].[Doctor]    Script Date: 8/19/2017 10:48:23 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -134,7 +134,7 @@ CREATE TABLE [dbo].[Doctor](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Feedback]    Script Date: 8/19/2017 3:14:25 PM ******/
+/****** Object:  Table [dbo].[Feedback]    Script Date: 8/19/2017 10:48:23 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -143,12 +143,14 @@ SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[Feedback](
 	[FeedbackId] [int] IDENTITY(1,1) NOT NULL,
-	[FeedbackDescription] [varchar](max) NULL,
+	[FeedbackTitle] [varchar](max) NULL,
 	[Quality] [float] NULL,
 	[Waiting] [float] NULL,
 	[Infrastructure] [float] NULL,
 	[DoctorId] [int] NULL,
 	[PatientId] [int] NULL,
+	[appointmentId] [int] NULL,
+	[FeedbackDescription] [varchar](max) NULL,
  CONSTRAINT [PK_Feedback] PRIMARY KEY CLUSTERED 
 (
 	[FeedbackId] ASC
@@ -158,7 +160,7 @@ CREATE TABLE [dbo].[Feedback](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Feedback_computed]    Script Date: 8/19/2017 3:14:25 PM ******/
+/****** Object:  Table [dbo].[Feedback_computed]    Script Date: 8/19/2017 10:48:23 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -169,6 +171,7 @@ CREATE TABLE [dbo].[Feedback_computed](
 	[Quality] [float] NULL,
 	[Waiting] [float] NULL,
 	[Infrastructure] [float] NULL,
+	[OverallScore] [float] NULL,
  CONSTRAINT [PK_Feedback_computed] PRIMARY KEY CLUSTERED 
 (
 	[ComputedId] ASC
@@ -176,7 +179,7 @@ CREATE TABLE [dbo].[Feedback_computed](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Hospital]    Script Date: 8/19/2017 3:14:25 PM ******/
+/****** Object:  Table [dbo].[Hospital]    Script Date: 8/19/2017 10:48:23 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -197,7 +200,7 @@ CREATE TABLE [dbo].[Hospital](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Patient]    Script Date: 8/19/2017 3:14:25 PM ******/
+/****** Object:  Table [dbo].[Patient]    Script Date: 8/19/2017 10:48:23 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -212,6 +215,7 @@ CREATE TABLE [dbo].[Patient](
 	[latitude] [float] NULL,
 	[longitude] [float] NULL,
 	[BloodGroupID] [int] NULL,
+	[mobilenumber] [bigint] NULL,
  CONSTRAINT [PK_Patient] PRIMARY KEY CLUSTERED 
 (
 	[PatientId] ASC
@@ -221,7 +225,7 @@ CREATE TABLE [dbo].[Patient](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[speciality]    Script Date: 8/19/2017 3:14:25 PM ******/
+/****** Object:  Table [dbo].[speciality]    Script Date: 8/19/2017 10:48:23 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
