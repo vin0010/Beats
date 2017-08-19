@@ -34,12 +34,14 @@
       <PropertyRef Name="FeedbackId" />
     </Key>
     <Property Name="FeedbackId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FeedbackDescription" Type="varchar(max)" />
+    <Property Name="FeedbackTitle" Type="varchar(max)" />
     <Property Name="Quality" Type="float" />
     <Property Name="Waiting" Type="float" />
     <Property Name="Infrastructure" Type="float" />
     <Property Name="DoctorId" Type="int" />
     <Property Name="PatientId" Type="int" />
+    <Property Name="appointmentId" Type="int" />
+    <Property Name="FeedbackDescription" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="Feedback_computed">
     <Key>
@@ -50,6 +52,7 @@
     <Property Name="Quality" Type="float" />
     <Property Name="Waiting" Type="float" />
     <Property Name="Infrastructure" Type="float" />
+    <Property Name="OverallScore" Type="float" />
   </EntityType>
   <EntityType Name="Hospital">
     <Key>
@@ -71,6 +74,7 @@
     <Property Name="latitude" Type="float" />
     <Property Name="longitude" Type="float" />
     <Property Name="BloodGroupID" Type="int" />
+    <Property Name="mobilenumber" Type="bigint" />
   </EntityType>
   <EntityType Name="speciality">
     <Key>

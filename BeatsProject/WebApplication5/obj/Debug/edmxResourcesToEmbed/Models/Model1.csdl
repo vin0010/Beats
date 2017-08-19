@@ -49,6 +49,8 @@
     <Property Name="PatientId" Type="Int32" />
     <NavigationProperty Name="Doctor" Relationship="Self.FK_Feedback_Doctorid" FromRole="Feedback" ToRole="Doctor" />
     <NavigationProperty Name="Patient" Relationship="Self.FK_Feedback_Patientid" FromRole="Feedback" ToRole="Patient" />
+    <Property Name="FeedbackTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="appointmentId" Type="Int32" />
   </EntityType>
   <EntityType Name="Feedback_computed">
     <Key>
@@ -59,6 +61,7 @@
     <Property Name="Quality" Type="Double" />
     <Property Name="Waiting" Type="Double" />
     <Property Name="Infrastructure" Type="Double" />
+    <Property Name="OverallScore" Type="Double" />
   </EntityType>
   <EntityType Name="Hospital">
     <Key>
@@ -84,6 +87,7 @@
     <NavigationProperty Name="Appointments" Relationship="Self.FK_Appointment_Patientid" FromRole="Patient" ToRole="Appointment" />
     <NavigationProperty Name="Bloodgroup" Relationship="Self.FK_Patient_BloodGroupID" FromRole="Patient" ToRole="Bloodgroup" />
     <NavigationProperty Name="Feedbacks" Relationship="Self.FK_Feedback_Patientid" FromRole="Patient" ToRole="Feedback" />
+    <Property Name="mobilenumber" Type="Int64" />
   </EntityType>
   <EntityType Name="speciality">
     <Key>

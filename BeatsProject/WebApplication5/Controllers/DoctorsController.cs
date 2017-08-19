@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Core.Common.CommandTrees;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
@@ -34,6 +35,30 @@ namespace WebApplication5.Controllers
             }
 
             return Ok(doctor);
+        }
+
+        // GET: api/Doctors/5
+        [ResponseType(typeof(Doctor))]
+        public IQueryable GetDoctorsNearby(int Specialityid,int Source_Latitude,int Source_Longitude,int median =2)
+        {             
+       //List<Doctor> DoctorbySpeciality= db.Doctors.Where(y => y.SpecialityID == Specialityid).ToList();
+
+       float Max_X = Source_Latitude + median;
+       float Max_Y = Source_Longitude + median;
+       float Min_X = Source_Latitude - median;
+       float Min_Y = Source_Longitude - median;
+            var Feedback_computed_query = db.Feedback_computed;
+       var qry = from b in db.Doctors
+              .Where(
+               y =>
+                   y.SpecialityID == Specialityid && y.latitude <= Max_X && y.latitude >= Min_X &&
+                   y.longitude <= Max_Y && y.longitude >= Min_Y)
+                 join f in db.Hospitals on b.HospitalId equals f.HospitalId
+                 join d in db.Feedback_computed on b.DoctorId equals d.DoctorId
+                 select new { b.DoctorId,b.DoctorName,b.latitude,b.longitude,b.HospitalId,f.HospitalName,d.OverallScore };
+
+       return qry;
+
         }
 
         // PUT: api/Doctors/5
@@ -115,5 +140,7 @@ namespace WebApplication5.Controllers
         {
             return db.Doctors.Count(e => e.DoctorId == id) > 0;
         }
+
+      
     }
 }

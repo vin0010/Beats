@@ -14,7 +14,7 @@
     <RootNamespace>WebApplication5</RootNamespace>
     <AssemblyName>WebApplication5</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -96,6 +96,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activity\NearbyLogic.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AppointmentsController.cs" />
     <Compile Include="Controllers\BloodgroupsController.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Models\Doctor.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DoctorsNearBy.cs" />
     <Compile Include="Models\Feedback.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -186,7 +188,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>56337</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:56337/</IISUrl>
+          <IISUrl>http://localhost/WebApplication5</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

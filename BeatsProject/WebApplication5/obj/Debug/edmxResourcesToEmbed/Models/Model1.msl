@@ -36,6 +36,8 @@
     <EntitySetMapping Name="Feedbacks">
       <EntityTypeMapping TypeName="hackathonDb1Model.Feedback">
         <MappingFragment StoreEntitySet="Feedback">
+          <ScalarProperty Name="appointmentId" ColumnName="appointmentId" />
+          <ScalarProperty Name="FeedbackTitle" ColumnName="FeedbackTitle" />
           <ScalarProperty Name="FeedbackId" ColumnName="FeedbackId" />
           <ScalarProperty Name="FeedbackDescription" ColumnName="FeedbackDescription" />
           <ScalarProperty Name="Quality" ColumnName="Quality" />
@@ -49,6 +51,7 @@
     <EntitySetMapping Name="Feedback_computed">
       <EntityTypeMapping TypeName="hackathonDb1Model.Feedback_computed">
         <MappingFragment StoreEntitySet="Feedback_computed">
+          <ScalarProperty Name="OverallScore" ColumnName="OverallScore" />
           <ScalarProperty Name="ComputedId" ColumnName="ComputedId" />
           <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
           <ScalarProperty Name="Quality" ColumnName="Quality" />
@@ -70,6 +73,7 @@
     <EntitySetMapping Name="Patients">
       <EntityTypeMapping TypeName="hackathonDb1Model.Patient">
         <MappingFragment StoreEntitySet="Patient">
+          <ScalarProperty Name="mobilenumber" ColumnName="mobilenumber" />
           <ScalarProperty Name="PatientId" ColumnName="PatientId" />
           <ScalarProperty Name="patientName" ColumnName="patientName" />
           <ScalarProperty Name="Gender" ColumnName="Gender" />

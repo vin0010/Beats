@@ -35,6 +35,18 @@ namespace WebApplication5.Controllers
             return Ok(patient);
         }
 
+        [ResponseType(typeof(Patient))]
+        public IHttpActionResult LastPatient()
+        {
+            Patient patient = db.Patients.Last();
+            if (patient == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(patient);
+        }
+
         // PUT: api/Patients/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutPatient(int id, Patient patient)

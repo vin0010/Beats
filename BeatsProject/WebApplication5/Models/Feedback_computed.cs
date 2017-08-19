@@ -19,5 +19,6 @@ namespace WebApplication5.Models
         public Nullable<double> Quality { get; set; }
         public Nullable<double> Waiting { get; set; }
         public Nullable<double> Infrastructure { get; set; }
+        public Nullable<double> OverallScore { get; set; }
     }
 }

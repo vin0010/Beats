@@ -21,6 +21,8 @@ namespace WebApplication5.Models
         public Nullable<double> Infrastructure { get; set; }
         public Nullable<int> DoctorId { get; set; }
         public Nullable<int> PatientId { get; set; }
+        public string FeedbackTitle { get; set; }
+        public Nullable<int> appointmentId { get; set; }
     
         public virtual Doctor Doctor { get; set; }
         public virtual Patient Patient { get; set; }

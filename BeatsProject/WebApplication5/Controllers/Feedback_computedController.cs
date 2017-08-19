@@ -35,6 +35,7 @@ namespace WebApplication5.Controllers
             return Ok(feedback_computed);
         }
 
+
         // PUT: api/Feedback_computed/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutFeedback_computed(int id, Feedback_computed feedback_computed)
@@ -67,9 +68,18 @@ namespace WebApplication5.Controllers
                 }
             }
 
+
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        // PUT: api/Feedback_computed/5
+        //[ResponseType(typeof(void))]
+        //public void UpdateFeedback_computed(int id, Feedback feedback)
+        //{
+        //var query = db.Feedback_computed
+
+        //     db.SaveChanges();
+        //}
         // POST: api/Feedback_computed
         [ResponseType(typeof(Feedback_computed))]
         public IHttpActionResult PostFeedback_computed(Feedback_computed feedback_computed)

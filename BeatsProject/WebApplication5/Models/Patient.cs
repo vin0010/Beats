@@ -28,6 +28,7 @@ namespace WebApplication5.Models
         public Nullable<double> latitude { get; set; }
         public Nullable<double> longitude { get; set; }
         public Nullable<int> BloodGroupID { get; set; }
+        public Nullable<long> mobilenumber { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Appointment> Appointments { get; set; }

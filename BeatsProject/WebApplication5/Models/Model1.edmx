@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="hackathonDb1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="hackathonDb1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Appointment">
           <Key>
             <PropertyRef Name="AppointmentID" />
@@ -39,12 +39,14 @@
             <PropertyRef Name="FeedbackId" />
           </Key>
           <Property Name="FeedbackId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FeedbackDescription" Type="varchar(max)" />
+          <Property Name="FeedbackTitle" Type="varchar(max)" />
           <Property Name="Quality" Type="float" />
           <Property Name="Waiting" Type="float" />
           <Property Name="Infrastructure" Type="float" />
           <Property Name="DoctorId" Type="int" />
           <Property Name="PatientId" Type="int" />
+          <Property Name="appointmentId" Type="int" />
+          <Property Name="FeedbackDescription" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Feedback_computed">
           <Key>
@@ -55,6 +57,7 @@
           <Property Name="Quality" Type="float" />
           <Property Name="Waiting" Type="float" />
           <Property Name="Infrastructure" Type="float" />
+          <Property Name="OverallScore" Type="float" />
         </EntityType>
         <EntityType Name="Hospital">
           <Key>
@@ -76,6 +79,7 @@
           <Property Name="latitude" Type="float" />
           <Property Name="longitude" Type="float" />
           <Property Name="BloodGroupID" Type="int" />
+          <Property Name="mobilenumber" Type="bigint" />
         </EntityType>
         <EntityType Name="speciality">
           <Key>
@@ -206,8 +210,7 @@
             <End Role="Patient" EntitySet="Patient" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="hackathonDb1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -260,6 +263,8 @@
           <Property Name="PatientId" Type="Int32" />
           <NavigationProperty Name="Doctor" Relationship="Self.FK_Feedback_Doctorid" FromRole="Feedback" ToRole="Doctor" />
           <NavigationProperty Name="Patient" Relationship="Self.FK_Feedback_Patientid" FromRole="Feedback" ToRole="Patient" />
+          <Property Name="FeedbackTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="appointmentId" Type="Int32" />
         </EntityType>
         <EntityType Name="Feedback_computed">
           <Key>
@@ -270,6 +275,7 @@
           <Property Name="Quality" Type="Double" />
           <Property Name="Waiting" Type="Double" />
           <Property Name="Infrastructure" Type="Double" />
+          <Property Name="OverallScore" Type="Double" />
         </EntityType>
         <EntityType Name="Hospital">
           <Key>
@@ -295,6 +301,7 @@
           <NavigationProperty Name="Appointments" Relationship="Self.FK_Appointment_Patientid" FromRole="Patient" ToRole="Appointment" />
           <NavigationProperty Name="Bloodgroup" Relationship="Self.FK_Patient_BloodGroupID" FromRole="Patient" ToRole="Bloodgroup" />
           <NavigationProperty Name="Feedbacks" Relationship="Self.FK_Feedback_Patientid" FromRole="Patient" ToRole="Feedback" />
+          <Property Name="mobilenumber" Type="Int64" />
         </EntityType>
         <EntityType Name="speciality">
           <Key>
@@ -467,6 +474,8 @@
           <EntitySetMapping Name="Feedbacks">
             <EntityTypeMapping TypeName="hackathonDb1Model.Feedback">
               <MappingFragment StoreEntitySet="Feedback">
+                <ScalarProperty Name="appointmentId" ColumnName="appointmentId" />
+                <ScalarProperty Name="FeedbackTitle" ColumnName="FeedbackTitle" />
                 <ScalarProperty Name="FeedbackId" ColumnName="FeedbackId" />
                 <ScalarProperty Name="FeedbackDescription" ColumnName="FeedbackDescription" />
                 <ScalarProperty Name="Quality" ColumnName="Quality" />
@@ -480,6 +489,7 @@
           <EntitySetMapping Name="Feedback_computed">
             <EntityTypeMapping TypeName="hackathonDb1Model.Feedback_computed">
               <MappingFragment StoreEntitySet="Feedback_computed">
+                <ScalarProperty Name="OverallScore" ColumnName="OverallScore" />
                 <ScalarProperty Name="ComputedId" ColumnName="ComputedId" />
                 <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
                 <ScalarProperty Name="Quality" ColumnName="Quality" />
@@ -501,6 +511,7 @@
           <EntitySetMapping Name="Patients">
             <EntityTypeMapping TypeName="hackathonDb1Model.Patient">
               <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="mobilenumber" ColumnName="mobilenumber" />
                 <ScalarProperty Name="PatientId" ColumnName="PatientId" />
                 <ScalarProperty Name="patientName" ColumnName="patientName" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
