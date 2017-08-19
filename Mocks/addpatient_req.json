@@ -1,0 +1,12 @@
+{
+    "name":"sdad",
+    "age":12,
+    "sex":"F",
+    "mobileNumber":2312331,
+    "bloodgroup":3,
+    "location":
+        {
+            "latitude":12.990523599999987,
+            "longitude":-80.24102003173829
+        }
+}

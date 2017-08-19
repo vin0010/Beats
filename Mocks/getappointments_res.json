@@ -1,0 +1,20 @@
+{
+    "date": "date",
+    "appointments": [
+        {
+            "patientname":"valli",
+            "time": 12,
+            "note":"issue"
+        },
+        {
+            "patientname":"ramya",
+            "time": 13,
+            "note":"issue"
+        },
+        {
+            "patientname":"prashanth",
+            "time": 14,
+            "note":"issue"
+        }
+    ]
+}

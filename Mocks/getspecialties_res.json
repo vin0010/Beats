@@ -1,0 +1,16 @@
+{
+    "specialties": [
+        {
+            "name":"ortho",
+            "id": 1,
+        },
+        {
+            "name":"cardio",
+            "id": 2,
+        },
+        {
+            "name":"Gastro",
+            "id": 3,
+        }
+    ]
+}

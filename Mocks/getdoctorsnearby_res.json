@@ -1,0 +1,37 @@
+{
+    "doctors": [
+        {
+            "name":"valli",
+            "score": 4.3,
+            "hospitalid":10,
+            "hospitalname":"Apollo",
+            "location":
+                {
+                    "latitude":12.990523599999987,
+                    "longitude":-80.24102003173829
+                }
+        },
+        {
+            "name":"ramya",
+            "score": 3,
+            "hospitalid":10,
+            "hospitalname":"Miot",
+            "location":
+                {
+                    "latitude":12.990523599999987,
+                    "longitude":-80.24102003173829
+                }
+        },
+        {
+            "name":"ramya",
+            "score": 4,
+            "hospitalid":12,
+            "hospitalname":"Hindumission",
+            "location":
+                {
+                    "latitude":12.990523599999987,
+                    "longitude":-80.24102003173829
+                }
+        }
+    ]
+}
