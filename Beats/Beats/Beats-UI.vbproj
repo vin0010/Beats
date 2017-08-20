@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -58,6 +59,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="web\hackathon\css\" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -84,6 +86,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
+    <Content Include="web\hackathon\Doctor.html" />
+    <Content Include="web\hackathon\Hospital.html" />
+    <Content Include="web\hackathon\Patient.html" />
+    <Content Include="web\hackathon\scripts\bootstrap-datepicker.js" />
+    <Content Include="web\hackathon\scripts\common.js" />
+    <Content Include="web\hackathon\scripts\config.js" />
+    <Content Include="web\hackathon\scripts\doctorScripts.js" />
+    <Content Include="web\hackathon\scripts\hospitalScripts.js" />
+    <Content Include="web\hackathon\scripts\locationpicker.jquery.min.js" />
+    <Content Include="web\hackathon\scripts\patientScripts.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="My Project\AssemblyInfo.vb" />
