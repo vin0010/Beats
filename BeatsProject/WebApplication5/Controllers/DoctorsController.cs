@@ -13,7 +13,7 @@ using WebApplication5.Models;
 
 namespace WebApplication5.Controllers
 {
-    [Route("Doctors")]
+   // [Route("Doctors")]
     public class DoctorsController : ApiController
     {
         private hackathonDb1Entities1 db = new hackathonDb1Entities1();
@@ -24,7 +24,7 @@ namespace WebApplication5.Controllers
             return db.Doctors;
         }
 
-        public IQueryable GetDoctorsforFeedback(int patientId)
+        public IQueryable GetDoctorsforFeedback(int Id)
         {
             //return db.Doctors;
             var qry = from b in db.Patients
@@ -49,25 +49,28 @@ namespace WebApplication5.Controllers
 
         // GET: api/Doctors/5
        // [ResponseType(typeof(Doctor))]
-        public IQueryable GetDoctorsNearby(int Specialityid,int Source_Latitude,int Source_Longitude,int median =2)
-        {             
-       //List<Doctor> DoctorbySpeciality= db.Doctors.Where(y => y.SpecialityID == Specialityid).ToList();
+        public IQueryable GetDoctorsNearby(int id)
+        {
+            //List<Doctor> DoctorbySpeciality= db.Doctors.Where(y => y.SpecialityID == Specialityid).ToList();
+            int median = 2;
+            float Source_Latitude = 10;
+            float Source_Longitude = 20;
+            float Max_X = Source_Latitude + median;
+            float Max_Y = Source_Longitude + median;
+            float Min_X = Source_Latitude - median;
+            float Min_Y = Source_Longitude - median;
 
-       float Max_X = Source_Latitude + median;
-       float Max_Y = Source_Longitude + median;
-       float Min_X = Source_Latitude - median;
-       float Min_Y = Source_Longitude - median;
-       
-       var qry = from b in db.Doctors
-              .Where(
-               y =>
-                   y.SpecialityID == Specialityid && y.latitude <= Max_X && y.latitude >= Min_X &&
-                   y.longitude <= Max_Y && y.longitude >= Min_Y)
-                 join f in db.Hospitals on b.HospitalId equals f.HospitalId
-                 join d in db.Feedback_computed on b.DoctorId equals d.DoctorId
-                 select new { b.DoctorId,b.DoctorName,b.latitude,b.longitude,b.HospitalId,f.HospitalName,d.OverallScore };
+            var qry = from b in db.Doctors
+                    .Where(
+                        y =>
+                            y.SpecialityID == id && y.latitude <= Max_X && y.latitude >= Min_X &&
+                            y.longitude <= Max_Y && y.longitude >= Min_Y)
+                join f in db.Hospitals on b.HospitalId equals f.HospitalId
+                join d in db.Feedback_computed on b.DoctorId equals d.DoctorId
+                select
+                new {b.DoctorId, b.DoctorName, b.latitude, b.longitude, b.HospitalId, f.HospitalName, d.OverallScore};
 
-       return qry;
+            return qry;
 
         }
 
