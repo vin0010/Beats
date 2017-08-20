@@ -6,55 +6,60 @@
 </head>
 <body>
 	<div class="container">
-		<!-- intro starts -->
-  		<div class="jumbotron" id="page_heading">
-    		<h1>Doctor - View your appointment and feedback</h1>
-    		
-    		<div class="btn-group">
-			  <button type="button" class="btn btn-primary" id="btn_appts">View Appointments</button>
-			  <button type="button" class="btn btn-primary" id="btn_feedback">View Feedback</button>
-			</div>
-  		</div>
-  		<div>   
-  		<!-- intro ends -->
-
-  		<!--get doctor id starts-->
-  		<form id="doctor_appt_form" class="hidden">
-		 	<div class="form-group">
-			    <label for="doctor_id">Doctor Id:</label>
-			    <input class="form-control input-sm" id="doctor_id" type="text">
-	  		</div>	  		
-		  <button type="button" class="btn btn-primary" id="doctor_view_appt">Submit</button>
-		</form>
-  		<!--get doctor id ends-->
-
-  		<!--View appts in grid starts-->
-  		<table class="table table-bordered hidden" id="appts_table">
-		    <thead>
-		      <tr>
-		        <th>Appointment Date</th>
-		        <th>Patient Name</th>
-		      </tr>
-		    </thead>
-		    <tbody>
-		    </tbody>
-		  </table>
-  		<!--View appts in grid ends-->
-
-  		<!--get doctor id starts-->
-  		<form id="doctor_feedback_form" class="hidden">
-		 	<div class="form-group">
-			    <label for="doctor_id_feedback">Doctor Id:</label>
-			    <input class="form-control input-sm" id="doctor_id_feedback" type="text">
-	  		</div>	  		
-		  <button type="button" class="btn btn-primary" id="doctor_view_feedback">Submit</button>
-		</form>
-  		<!--get doctor id ends-->
-
-  		<!--feedback chart starts-->
-  			<div id="feedback_chart" class="hidden" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-  		<!--feedback chart ends-->
-	</div>
+        <!-- intro starts -->
+        <div class="jumbotron" id="page_heading">
+            <h1>Doctor - View your appointment and feedback</h1>
+            <div class="dropdown" style="float:left;width: 50%">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                    Menus
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="./Patient.html">Patient</a></li>
+                    <li><a href="./Doctor.html">Doctor</a></li>
+                    <li><a href="./Hospital.html">Hospital</a></li>
+                </ul>
+            </div>
+            <div class="btn-group" style="float: right">
+                <button type="button" class="btn btn-primary" id="btn_appts">View Appointments</button>
+                <button type="button" class="btn btn-primary" id="btn_feedback">View Feedback</button>
+            </div>
+        </div>
+        <div>
+            <!-- intro ends -->
+            <!--get doctor id starts-->
+            <form id="doctor_appt_form" class="hidden">
+                <div class="form-group">
+                    <label for="doctor_id">Doctor Id:</label>
+                    <input class="form-control input-sm" id="doctor_id" type="text">
+                </div>
+                <button type="button" class="btn btn-primary" id="doctor_view_appt">Submit</button>
+            </form>
+            <!--get doctor id ends-->
+            <!--View appts in grid starts-->
+            <table class="table table-bordered hidden" id="appts_table">
+                <thead>
+                    <tr>
+                        <th>Appointment Date</th>
+                        <th>Patient Name</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <!--View appts in grid ends-->
+            <!--get doctor id starts-->
+            <form id="doctor_feedback_form" class="hidden">
+                <div class="form-group">
+                    <label for="doctor_id_feedback">Doctor Id:</label>
+                    <input class="form-control input-sm" id="doctor_id_feedback" type="text">
+                </div>
+                <button type="button" class="btn btn-primary" id="doctor_view_feedback">Submit</button>
+            </form>
+            <!--get doctor id ends-->
+            <!--feedback chart starts-->
+            <div id="feedback_chart" class="hidden" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            <!--feedback chart ends-->
+        </div>
 	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://code.highcharts.com/highcharts.js"></script>
