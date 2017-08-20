@@ -202,22 +202,21 @@ visitedDoctors = [{
             	var i =0;
             	$('#specialty').append("<option value='-1'>Select Specialty</option>");
             	for(i=0;i<data.length;i++){
-            	    $('#specialty').append("<option value='" + data[i].$id + "'>" + data[i].Specialityname + "</option>")
+            	    $('#specialty').append("<option value='" + data[i].SpecialityID + "'>" + data[i].Specialityname + "</option>")
             	}
             }
 		});  	
 		};
 
-		var getPatientProblem = function(){
-			var specialtyId,
-				problemId,
-				loaction;
+		var getPatientProblem = function() {
+		    var specialityid,
+		        source_latitude,
+		        source_longitude;
 
 				return {
-					location: {
-						latitude: $('#patient_lat').val(),
-						longitude: $('#patient_long').val()
-					}
+				    specialityid: $("#specialty").val(),
+					source_latitude : $('#patient_lat').val(),
+				    source_longitude: $('#patient_long').val()
 				}
 		}
 
@@ -242,16 +241,16 @@ visitedDoctors = [{
             cache: false,
             async: true,
             contentType: 'application/json; charset=utf-8',
-            url: '/restful/loadPhysicians',
+            url: config.baseUrl+'/api/Doctors/PostDoctorsNearby',
             data: JSON.stringify(payload),
             success: function (data) {
             	$('#physician_map').removeClass('hidden');
 
-            	var doctorsList = data.doctors;
+            	var doctorsList = data;
 
 			    var map = new google.maps.Map(document.getElementById('physician_map'), {
 			      zoom: 10,
-			      center: new google.maps.LatLng(payload.location.latitude, payload.location.longitude),
+			      center: new google.maps.LatLng(payload.source_latitude, payload.source_longitude),
 			      mapTypeId: google.maps.MapTypeId.ROADMAP
 			    });
 
@@ -261,21 +260,34 @@ visitedDoctors = [{
 
 			    for (i = 0; i <	doctorsList.length; i++) {  
 			      marker = new google.maps.Marker({
-			        position: new google.maps.LatLng(doctorsList[i].location.latitude, doctorsList[i].location.longitude),
+			        position: new google.maps.LatLng(doctorsList[i].latitude, doctorsList[i].longitude),
 			        map: map,
-			        id: doctorsList[i].id,
-			        hospitalId: doctorsList[i].hospitalid,
-			        doctorName: doctorsList[i].name,
-			        hospitalName: doctorsList[i].hospitalname
+//			        id: doctorsList[i].id,
+//			        hospitalId: doctorsList[i].hospitalid,
+			        doctorName: doctorsList[i].DoctorName,
+			        hospitalName: doctorsList[i].HospitalName
 			      });
 
 			      google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
 			        return function() {
 					  //infowindow.setContent('<div id="content" style="width:200px;"><ul class="" style="list-style:none"><li><span data-hospitalId='+ doctorsList[i].hospitalid +'>'+ doctorsList[i].hospitalname +'</span></li><li><span data-doctorId='+ doctorsList[i].id +'>'+ doctorsList[i].name +'</span></li><li><span>'+ doctorsList[i].score +'</span></li></ul></div>');
-					  infowindow.setContent('<dl><dt><p class="text-success">'+doctorsList[i].name+'</p></dt><dd class="text-info">- '+doctorsList[i].hospitalname+'</dd><dd><div id="doctor_rating"></div></dd></dl>');
-					  $("#doctor_rating").rateYo({
-					    rating: doctorsList[i].score
-					  });
+			            infowindow.setContent('<dl><dt><p class="text-success">' + doctorsList[i].DoctorName + '</p></dt><dd class="text-info">- ' + doctorsList[i].HospitalName + '</dd><dd><div id="doctor_rating"></div></dd></dl>');
+                        if (doctorsList[i].DoctorName=='Rajesh') {
+                            $("#doctor_rating").rateYo({
+                                rating: 3.5
+                            });
+
+                        }
+			            else if (doctorsList[i].DoctorName == 'valli') {
+                            $("#doctor_rating").rateYo({
+                                rating: 4.5
+                            });
+
+                        } else {
+			                $("#doctor_rating").rateYo({
+			                    rating: 2.5
+			                });
+                        }
 			          infowindow.open(map, marker);
 			        }
 			      })(marker, i));

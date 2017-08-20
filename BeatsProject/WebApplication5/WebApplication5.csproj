@@ -117,6 +117,7 @@
     <Compile Include="Models\Bloodgroup.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\HeadersDoctors.cs" />
     <Compile Include="Models\Doctor.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
