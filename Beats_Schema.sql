@@ -1,7 +1,7 @@
 USE [master]
 GO
 /****** Object:  Database [hackathonDb1]    Script Date: 8/20/2017 1:39:14 AM ******/
-CREATE DATABASE [hackathonDb1]
+CREATE DATABASE [beats]
  CONTAINMENT = NONE
  ON  PRIMARY 
 ( NAME = N'hackathonDb1', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\hackathonDb1.mdf' , SIZE = 3264KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
@@ -77,13 +77,12 @@ EXEC sys.sp_db_vardecimal_storage_format N'hackathonDb1', N'ON'
 GO
 USE [hackathonDb1]
 GO
+
 /****** Object:  User [temp]    Script Date: 8/20/2017 1:39:14 AM ******/
 CREATE USER [temp] FOR LOGIN [temp] WITH DEFAULT_SCHEMA=[temp]
 GO
-/****** Object:  Schema [temp]    Script Date: 8/20/2017 1:39:14 AM ******/
-CREATE SCHEMA [temp]
-GO
-/****** Object:  Table [dbo].[Appointment]    Script Date: 8/20/2017 1:39:14 AM ******/
+/****** Object:  Table [dbo].[Appointment]    Script Date: 8/19/2017 10:48:23 PM ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -100,7 +99,7 @@ CREATE TABLE [dbo].[Appointment](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Bloodgroup]    Script Date: 8/20/2017 1:39:14 AM ******/
+/****** Object:  Table [dbo].[Bloodgroup]    Script Date: 8/19/2017 10:48:23 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -115,7 +114,7 @@ CREATE TABLE [dbo].[Bloodgroup](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Doctor]    Script Date: 8/20/2017 1:39:14 AM ******/
+/****** Object:  Table [dbo].[Doctor]    Script Date: 8/19/2017 10:48:23 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -140,7 +139,7 @@ CREATE TABLE [dbo].[Doctor](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Feedback]    Script Date: 8/20/2017 1:39:14 AM ******/
+/****** Object:  Table [dbo].[Feedback]    Script Date: 8/19/2017 10:48:23 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -166,7 +165,7 @@ CREATE TABLE [dbo].[Feedback](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Feedback_computed]    Script Date: 8/20/2017 1:39:14 AM ******/
+/****** Object:  Table [dbo].[Feedback_computed]    Script Date: 8/19/2017 10:48:23 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -185,7 +184,7 @@ CREATE TABLE [dbo].[Feedback_computed](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Hospital]    Script Date: 8/20/2017 1:39:14 AM ******/
+/****** Object:  Table [dbo].[Hospital]    Script Date: 8/19/2017 10:48:23 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -206,7 +205,7 @@ CREATE TABLE [dbo].[Hospital](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Patient]    Script Date: 8/20/2017 1:39:14 AM ******/
+/****** Object:  Table [dbo].[Patient]    Script Date: 8/19/2017 10:48:23 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -231,7 +230,7 @@ CREATE TABLE [dbo].[Patient](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[speciality]    Script Date: 8/20/2017 1:39:14 AM ******/
+/****** Object:  Table [dbo].[speciality]    Script Date: 8/19/2017 10:48:23 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

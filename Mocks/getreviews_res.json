@@ -1,0 +1,22 @@
+{
+    "quality":4.5,
+    "infrastructure":4.5,
+    "waitingtime":45,
+    "reviews": [
+        {
+            "patientname":"valli",
+            "rating": 4.3,
+            "comments":"dbashjbdhasbdhjasbdhbasdbashdbahjsbdhjbd",
+        },
+        {
+            "patientname":"ramya",
+            "rating": 4.3,
+            "comments":"dbashjbdhasbdhjasbdhbasdbashdbahjsbdhjbd",
+        },
+        {
+            "patientname":"prashanth",
+            "rating": 2.5,
+            "comments":"dbashjbdhasbdhjasbdhbasdbashdbahjsbdhjbd",
+        },
+    ]
+}

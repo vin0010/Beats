@@ -1,0 +1,40 @@
+{
+    "bloodgrouplist": [
+        {
+            "id":1,
+            "name":"valli",
+            "mobile":"8124503353",
+            "bloodgroupid":10,
+            "bloodgroupname":"O-",
+            "location":
+                {
+                    "latitude":12.990523599999987,
+                    "longitude":-80.24102003173829
+                }
+        },
+        {
+            "id":2,
+            "name":"ramys",
+            "mobile":"1234563425",
+            "bloodgroupid":10,
+            "bloodgroupname":"O+",
+            "location":
+                {
+                    "latitude":13.990523599999987,
+                    "longitude":-70.24102003173829
+                }
+        },
+        {
+            "id":3,
+            "name":"prashanth",
+            "mobile":"1234563424",
+            "bloodgroupid":10,
+            "bloodgroupname":"O-",
+            "location":
+                {
+                    "latitude":22.990523599999987,
+                    "longitude":-70.24102003173829
+                }
+        }
+    ]
+}

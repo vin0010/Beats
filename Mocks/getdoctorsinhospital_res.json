@@ -1,0 +1,16 @@
+{
+    "doctors": [
+        {
+            "name":"Valli",
+            "id": 1
+        },
+        {
+            "name":"Ramya",
+            "id": 2
+        },
+        {
+            "name":"Prashanth",
+            "id": 3
+        }
+    ]
+}
