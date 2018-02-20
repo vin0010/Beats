@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="hackathonDb1ModelStoreContainer" CdmEntityContainer="hackathonDb1Entities1">
+    <EntitySetMapping Name="Appointments">
+      <EntityTypeMapping TypeName="hackathonDb1Model.Appointment">
+        <MappingFragment StoreEntitySet="Appointment">
+          <ScalarProperty Name="AppointmentID" ColumnName="AppointmentID" />
+          <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+          <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bloodgroups">
+      <EntityTypeMapping TypeName="hackathonDb1Model.Bloodgroup">
+        <MappingFragment StoreEntitySet="Bloodgroup">
+          <ScalarProperty Name="BloodgroupID" ColumnName="BloodgroupID" />
+          <ScalarProperty Name="BloodGroupName" ColumnName="BloodGroupName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Doctors">
+      <EntityTypeMapping TypeName="hackathonDb1Model.Doctor">
+        <MappingFragment StoreEntitySet="Doctor">
+          <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+          <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="SpecialityID" ColumnName="SpecialityID" />
+          <ScalarProperty Name="HospitalId" ColumnName="HospitalId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Feedbacks">
+      <EntityTypeMapping TypeName="hackathonDb1Model.Feedback">
+        <MappingFragment StoreEntitySet="Feedback">
+          <ScalarProperty Name="appointmentId" ColumnName="appointmentId" />
+          <ScalarProperty Name="FeedbackTitle" ColumnName="FeedbackTitle" />
+          <ScalarProperty Name="FeedbackId" ColumnName="FeedbackId" />
+          <ScalarProperty Name="FeedbackDescription" ColumnName="FeedbackDescription" />
+          <ScalarProperty Name="Quality" ColumnName="Quality" />
+          <ScalarProperty Name="Waiting" ColumnName="Waiting" />
+          <ScalarProperty Name="Infrastructure" ColumnName="Infrastructure" />
+          <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+          <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Feedback_computed">
+      <EntityTypeMapping TypeName="hackathonDb1Model.Feedback_computed">
+        <MappingFragment StoreEntitySet="Feedback_computed">
+          <ScalarProperty Name="OverallScore" ColumnName="OverallScore" />
+          <ScalarProperty Name="ComputedId" ColumnName="ComputedId" />
+          <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+          <ScalarProperty Name="Quality" ColumnName="Quality" />
+          <ScalarProperty Name="Waiting" ColumnName="Waiting" />
+          <ScalarProperty Name="Infrastructure" ColumnName="Infrastructure" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hospitals">
+      <EntityTypeMapping TypeName="hackathonDb1Model.Hospital">
+        <MappingFragment StoreEntitySet="Hospital">
+          <ScalarProperty Name="HospitalId" ColumnName="HospitalId" />
+          <ScalarProperty Name="HospitalName" ColumnName="HospitalName" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patients">
+      <EntityTypeMapping TypeName="hackathonDb1Model.Patient">
+        <MappingFragment StoreEntitySet="Patient">
+          <ScalarProperty Name="mobilenumber" ColumnName="mobilenumber" />
+          <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+          <ScalarProperty Name="patientName" ColumnName="patientName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="BloodGroupID" ColumnName="BloodGroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="specialities">
+      <EntityTypeMapping TypeName="hackathonDb1Model.speciality">
+        <MappingFragment StoreEntitySet="speciality">
+          <ScalarProperty Name="SpecialityID" ColumnName="SpecialityID" />
+          <ScalarProperty Name="Specialityname" ColumnName="Specialityname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

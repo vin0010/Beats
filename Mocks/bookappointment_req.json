@@ -1,6 +1,5 @@
 {
-    "name": "Valli",
+    "patientId":1,
     "doctorid": 10,
-    "date":,	
-    "note":"none"
+    "date":""
 }

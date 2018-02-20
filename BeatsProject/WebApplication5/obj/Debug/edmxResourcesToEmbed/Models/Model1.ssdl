@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="hackathonDb1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Appointment">
+    <Key>
+      <PropertyRef Name="AppointmentID" />
+    </Key>
+    <Property Name="AppointmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoctorId" Type="int" />
+    <Property Name="PatientId" Type="int" />
+    <Property Name="Date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Bloodgroup">
+    <Key>
+      <PropertyRef Name="BloodgroupID" />
+    </Key>
+    <Property Name="BloodgroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BloodGroupName" Type="nchar" MaxLength="4" />
+  </EntityType>
+  <EntityType Name="Doctor">
+    <Key>
+      <PropertyRef Name="DoctorId" />
+    </Key>
+    <Property Name="DoctorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoctorName" Type="varchar(max)" />
+    <Property Name="Gender" Type="char" MaxLength="1" />
+    <Property Name="Age" Type="int" />
+    <Property Name="latitude" Type="float" />
+    <Property Name="longitude" Type="float" />
+    <Property Name="SpecialityID" Type="int" />
+    <Property Name="HospitalId" Type="int" />
+  </EntityType>
+  <EntityType Name="Feedback">
+    <Key>
+      <PropertyRef Name="FeedbackId" />
+    </Key>
+    <Property Name="FeedbackId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FeedbackTitle" Type="varchar(max)" />
+    <Property Name="Quality" Type="float" />
+    <Property Name="Waiting" Type="float" />
+    <Property Name="Infrastructure" Type="float" />
+    <Property Name="DoctorId" Type="int" />
+    <Property Name="PatientId" Type="int" />
+    <Property Name="appointmentId" Type="int" />
+    <Property Name="FeedbackDescription" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Feedback_computed">
+    <Key>
+      <PropertyRef Name="ComputedId" />
+    </Key>
+    <Property Name="ComputedId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoctorId" Type="int" />
+    <Property Name="Quality" Type="float" />
+    <Property Name="Waiting" Type="float" />
+    <Property Name="Infrastructure" Type="float" />
+    <Property Name="OverallScore" Type="float" />
+  </EntityType>
+  <EntityType Name="Hospital">
+    <Key>
+      <PropertyRef Name="HospitalId" />
+    </Key>
+    <Property Name="HospitalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HospitalName" Type="varchar(max)" />
+    <Property Name="latitude" Type="float" />
+    <Property Name="longitude" Type="float" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="PatientId" />
+    </Key>
+    <Property Name="PatientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="patientName" Type="varchar(max)" />
+    <Property Name="Gender" Type="char" MaxLength="1" />
+    <Property Name="Age" Type="int" />
+    <Property Name="latitude" Type="float" />
+    <Property Name="longitude" Type="float" />
+    <Property Name="BloodGroupID" Type="int" />
+    <Property Name="mobilenumber" Type="bigint" />
+  </EntityType>
+  <EntityType Name="speciality">
+    <Key>
+      <PropertyRef Name="SpecialityID" />
+    </Key>
+    <Property Name="SpecialityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Specialityname" Type="varchar(max)" />
+  </EntityType>
+  <Association Name="FK_Appointment_Doctorid">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="DoctorId" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="DoctorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appointment_Patientid">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="PatientId" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="PatientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Doctor_Hospitalid">
+    <End Role="Hospital" Type="Self.Hospital" Multiplicity="0..1" />
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hospital">
+        <PropertyRef Name="HospitalId" />
+      </Principal>
+      <Dependent Role="Doctor">
+        <PropertyRef Name="HospitalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Doctor_SpecialityID">
+    <End Role="speciality" Type="Self.speciality" Multiplicity="0..1" />
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="speciality">
+        <PropertyRef Name="SpecialityID" />
+      </Principal>
+      <Dependent Role="Doctor">
+        <PropertyRef Name="SpecialityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Feedback_Doctorid">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+    <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="DoctorId" />
+      </Principal>
+      <Dependent Role="Feedback">
+        <PropertyRef Name="DoctorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Feedback_Patientid">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+    <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="PatientId" />
+      </Principal>
+      <Dependent Role="Feedback">
+        <PropertyRef Name="PatientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient_BloodGroupID">
+    <End Role="Bloodgroup" Type="Self.Bloodgroup" Multiplicity="0..1" />
+    <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bloodgroup">
+        <PropertyRef Name="BloodgroupID" />
+      </Principal>
+      <Dependent Role="Patient">
+        <PropertyRef Name="BloodGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="hackathonDb1ModelStoreContainer">
+    <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bloodgroup" EntityType="Self.Bloodgroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Feedback_computed" EntityType="Self.Feedback_computed" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Hospital" EntityType="Self.Hospital" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="speciality" EntityType="Self.speciality" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Appointment_Doctorid" Association="Self.FK_Appointment_Doctorid">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="Appointment" EntitySet="Appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appointment_Patientid" Association="Self.FK_Appointment_Patientid">
+      <End Role="Patient" EntitySet="Patient" />
+      <End Role="Appointment" EntitySet="Appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Doctor_Hospitalid" Association="Self.FK_Doctor_Hospitalid">
+      <End Role="Hospital" EntitySet="Hospital" />
+      <End Role="Doctor" EntitySet="Doctor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Doctor_SpecialityID" Association="Self.FK_Doctor_SpecialityID">
+      <End Role="speciality" EntitySet="speciality" />
+      <End Role="Doctor" EntitySet="Doctor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Feedback_Doctorid" Association="Self.FK_Feedback_Doctorid">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="Feedback" EntitySet="Feedback" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Feedback_Patientid" Association="Self.FK_Feedback_Patientid">
+      <End Role="Patient" EntitySet="Patient" />
+      <End Role="Feedback" EntitySet="Feedback" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_BloodGroupID" Association="Self.FK_Patient_BloodGroupID">
+      <End Role="Bloodgroup" EntitySet="Bloodgroup" />
+      <End Role="Patient" EntitySet="Patient" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
